@@ -1,0 +1,370 @@
+@import "tailwindcss";
+
+/* 8.4.1 공통 UI 토큰: #FFFFFF, #111111, #666666, #EAEAEA, 카드 14px — 전 화면 일관 */
+/* §29.2 반응형·테마: 시스템 색상 모드 힌트(다크 모드 스타일은 추후 확장) */
+:root {
+  color-scheme: light;
+  --color-bg: #ffffff;
+  --color-bg-soft: #fafafa;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f5f5f5;
+  --color-surface-alt-2: #f0f0f0;
+  --color-text: #111111;
+  --color-text-muted: #666666;
+  --color-text-subtle: #666666;
+  --color-border: #eaeaea;
+  --color-border-strong: #111111;
+  --color-live: #ff3b30;
+  --radius-card: 14px;
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.04);
+  --color-surface-rgb: 255 255 255;
+  --color-surface-alt-rgb: 245 245 245;
+  --neutral-bg-50: 250 250 250;
+  --neutral-bg-100: 245 245 245;
+  --neutral-bg-200: 229 229 229;
+  --neutral-bg-300: 212 212 212;
+  --neutral-bg-700: 64 64 64;
+  --neutral-bg-900: 23 23 23;
+  --neutral-text-300: 212 212 212;
+  --neutral-text-400: 163 163 163;
+  --neutral-text-500: 115 115 115;
+  --neutral-text-600: 82 82 82;
+  --neutral-text-700: 64 64 64;
+  --neutral-text-800: 38 38 38;
+  --neutral-text-900: 23 23 23;
+  --neutral-border-100: 245 245 245;
+  --neutral-border-200: 229 229 229;
+  --neutral-border-300: 212 212 212;
+  --neutral-border-900: 23 23 23;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #0b0b0b;
+  --color-bg-soft: #101010;
+  --color-surface: #151515;
+  --color-surface-alt: #1c1c1c;
+  --color-surface-alt-2: #202020;
+  --color-text: #f5f5f5;
+  --color-text-muted: #b3b3b3;
+  --color-text-subtle: #b3b3b3;
+  --color-border: #2a2a2a;
+  --color-border-strong: #3a3a3a;
+  --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.45);
+  --color-surface-rgb: 21 21 21;
+  --color-surface-alt-rgb: 28 28 28;
+  --neutral-bg-50: 21 21 21;
+  --neutral-bg-100: 26 26 26;
+  --neutral-bg-200: 32 32 32;
+  --neutral-bg-300: 42 42 42;
+  --neutral-bg-700: 58 58 58;
+  --neutral-bg-900: 17 17 17;
+  --neutral-text-300: 138 138 138;
+  --neutral-text-400: 163 163 163;
+  --neutral-text-500: 179 179 179;
+  --neutral-text-600: 199 199 199;
+  --neutral-text-700: 222 222 222;
+  --neutral-text-800: 237 237 237;
+  --neutral-text-900: 245 245 245;
+  --neutral-border-100: 42 42 42;
+  --neutral-border-200: 51 51 51;
+  --neutral-border-300: 61 61 61;
+  --neutral-border-900: 17 17 17;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --color-bg: #0b0b0b;
+    --color-bg-soft: #101010;
+    --color-surface: #151515;
+    --color-surface-alt: #1c1c1c;
+    --color-surface-alt-2: #202020;
+    --color-text: #f5f5f5;
+    --color-text-muted: #b3b3b3;
+    --color-text-subtle: #b3b3b3;
+    --color-border: #2a2a2a;
+    --color-border-strong: #3a3a3a;
+    --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.45);
+    --color-surface-rgb: 21 21 21;
+    --color-surface-alt-rgb: 28 28 28;
+    --neutral-bg-50: 21 21 21;
+    --neutral-bg-100: 26 26 26;
+    --neutral-bg-200: 32 32 32;
+    --neutral-bg-300: 42 42 42;
+    --neutral-bg-700: 58 58 58;
+    --neutral-bg-900: 17 17 17;
+    --neutral-text-300: 138 138 138;
+    --neutral-text-400: 163 163 163;
+    --neutral-text-500: 179 179 179;
+    --neutral-text-600: 199 199 199;
+    --neutral-text-700: 222 222 222;
+    --neutral-text-800: 237 237 237;
+    --neutral-text-900: 245 245 245;
+    --neutral-border-100: 42 42 42;
+    --neutral-border-200: 51 51 51;
+    --neutral-border-300: 61 61 61;
+    --neutral-border-900: 17 17 17;
+  }
+}
+
+@theme inline {
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
+  --font-sans: var(--font-sans-custom);
+  --font-mono: var(--font-mono-custom);
+}
+
+/* Theme token overrides */
+.bg-white,
+.bg-\[\#FFFFFF\] {
+  background-color: var(--color-surface);
+}
+
+.bg-\[\#FAFAFA\] {
+  background-color: var(--color-bg-soft);
+}
+
+.bg-\[\#F5F5F5\] {
+  background-color: var(--color-surface-alt);
+}
+
+.bg-\[\#F0F0F0\] {
+  background-color: var(--color-surface-alt-2);
+}
+
+.bg-white\/90 {
+  background-color: rgb(var(--color-surface-rgb) / 0.9);
+}
+
+.bg-white\/95 {
+  background-color: rgb(var(--color-surface-rgb) / 0.95);
+}
+
+.text-\[\#111111\] {
+  color: var(--color-text);
+}
+
+.text-\[\#666666\] {
+  color: var(--color-text-muted);
+}
+
+.text-\[\#999999\] {
+  color: var(--color-text-muted);
+}
+
+.placeholder\:text-\[\#999999\]::placeholder,
+.placeholder\:text-\[\#666666\]::placeholder {
+  color: var(--color-text-muted);
+}
+
+.text-black {
+  color: var(--color-text);
+}
+
+.border-\[\#EAEAEA\] {
+  border-color: var(--color-border);
+}
+
+.border-\[\#111111\] {
+  border-color: var(--color-border-strong);
+}
+
+.hover\:bg-\[\#FAFAFA\]:hover {
+  background-color: var(--color-bg-soft);
+}
+
+.hover\:bg-\[\#F5F5F5\]:hover {
+  background-color: var(--color-surface-alt);
+}
+
+.hover\:bg-\[\#F0F0F0\]:hover {
+  background-color: var(--color-surface-alt-2);
+}
+
+.hover\:text-\[\#111111\]:hover {
+  color: var(--color-text);
+}
+
+.bg-neutral-50 {
+  background-color: rgb(var(--neutral-bg-50) / var(--tw-bg-opacity, 1));
+}
+
+.bg-neutral-100 {
+  background-color: rgb(var(--neutral-bg-100) / var(--tw-bg-opacity, 1));
+}
+
+.bg-neutral-200 {
+  background-color: rgb(var(--neutral-bg-200) / var(--tw-bg-opacity, 1));
+}
+
+.bg-neutral-300 {
+  background-color: rgb(var(--neutral-bg-300) / var(--tw-bg-opacity, 1));
+}
+
+.bg-neutral-700 {
+  background-color: rgb(var(--neutral-bg-700) / var(--tw-bg-opacity, 1));
+}
+
+.bg-neutral-900 {
+  background-color: rgb(var(--neutral-bg-900) / var(--tw-bg-opacity, 1));
+}
+
+.text-neutral-300 {
+  color: rgb(var(--neutral-text-300) / var(--tw-text-opacity, 1));
+}
+
+.text-neutral-400 {
+  color: rgb(var(--neutral-text-400) / var(--tw-text-opacity, 1));
+}
+
+.text-neutral-500 {
+  color: rgb(var(--neutral-text-500) / var(--tw-text-opacity, 1));
+}
+
+.text-neutral-600 {
+  color: rgb(var(--neutral-text-600) / var(--tw-text-opacity, 1));
+}
+
+.text-neutral-700 {
+  color: rgb(var(--neutral-text-700) / var(--tw-text-opacity, 1));
+}
+
+.text-neutral-800 {
+  color: rgb(var(--neutral-text-800) / var(--tw-text-opacity, 1));
+}
+
+.text-neutral-900 {
+  color: rgb(var(--neutral-text-900) / var(--tw-text-opacity, 1));
+}
+
+.border-neutral-100 {
+  border-color: rgb(var(--neutral-border-100) / var(--tw-border-opacity, 1));
+}
+
+.border-neutral-200 {
+  border-color: rgb(var(--neutral-border-200) / var(--tw-border-opacity, 1));
+}
+
+.border-neutral-300 {
+  border-color: rgb(var(--neutral-border-300) / var(--tw-border-opacity, 1));
+}
+
+.border-neutral-900 {
+  border-color: rgb(var(--neutral-border-900) / var(--tw-border-opacity, 1));
+}
+
+.hover\:bg-neutral-50:hover {
+  background-color: rgb(var(--neutral-bg-50) / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-neutral-100:hover {
+  background-color: rgb(var(--neutral-bg-100) / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-neutral-200:hover {
+  background-color: rgb(var(--neutral-bg-200) / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-neutral-700:hover {
+  background-color: rgb(var(--neutral-bg-700) / var(--tw-bg-opacity, 1));
+}
+
+.hover\:text-neutral-700:hover {
+  color: rgb(var(--neutral-text-700) / var(--tw-text-opacity, 1));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* §29.2·§29.10 스크롤 부드러운(맨 위로·앵커 등) */
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(circle at top, var(--color-bg) 0%, var(--color-bg-soft) 55%, var(--color-bg) 100%);
+  color: var(--color-text);
+  /* §29.10 폰트 fallback: 시스템·일반 sans-serif */
+  font-family: var(--font-sans-custom), ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+  line-break: loose;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 접근성: 포커스 링 (키보드/스크린 리더) */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex="0"]:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.fade-in {
+  animation: fadeIn 260ms ease-out both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* §29.10 접근성: prefers-reduced-motion 시 애니메이션·트랜지션 최소화 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 다크 대시보드 내 select 드롭다운: 열린 옵션 목록이 흰 배경에 검정 글자로 보이도록 */
+.dashboard-dark-select select option {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.trace-pulse {
+  animation: tracePulse 900ms ease-out infinite;
+}
+
+@keyframes tracePulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.35;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
